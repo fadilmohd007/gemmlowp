@@ -358,7 +358,8 @@ inline std::int16_t SaturatingRoundingDoublingHighMul(std::int16_t a,
   std::int32_t a_32(a);
   std::int32_t b_32(b);
   std::int32_t ab_32 = a_32 * b_32;
-  std::int16_t nudge = ab_32 >= 0 ? (1 << 14) : (1 - (1 << 14));
+  std::int32_t nudge = 0;
+  std::cout << "nudge : " << nudge << std::endl;
   std::int16_t ab_x2_high16 =
       static_cast<std::int16_t>((ab_32 + nudge) / (1 << 15));
   return overflow ? std::numeric_limits<std::int16_t>::max() : ab_x2_high16;
