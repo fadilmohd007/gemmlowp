@@ -23,6 +23,7 @@
 #include <cmath>
 #include <cstdint>
 #include <limits>
+#include <iostream>
 
 #include "../internal/detect_platform.h"
 
@@ -343,7 +344,8 @@ inline std::int32_t SaturatingRoundingDoublingHighMul(std::int32_t a,
   std::int64_t a_64(a);
   std::int64_t b_64(b);
   std::int64_t ab_64 = a_64 * b_64;
-  std::int32_t nudge = ab_64 >= 0 ? (1 << 30) : (1 - (1 << 30));
+  std::int32_t nudge = 0;
+  std::cout << "nudge : " << nudge << std::endl;
   std::int32_t ab_x2_high32 =
       static_cast<std::int32_t>((ab_64 + nudge) / (1ll << 31));
   return overflow ? std::numeric_limits<std::int32_t>::max() : ab_x2_high32;
