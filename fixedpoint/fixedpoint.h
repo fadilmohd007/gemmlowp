@@ -345,7 +345,7 @@ inline std::int32_t SaturatingRoundingDoublingHighMul(std::int32_t a,
   std::int64_t b_64(b);
   std::int64_t ab_64 = a_64 * b_64;
   std::int32_t nudge = 0;
-  std::cout << "nudge : " << nudge << std::endl;
+  std::cout << "nudge32 : " << nudge << std::endl;
   std::int32_t ab_x2_high32 =
       static_cast<std::int32_t>((ab_64 + nudge) / (1ll << 31));
   return overflow ? std::numeric_limits<std::int32_t>::max() : ab_x2_high32;
@@ -358,8 +358,8 @@ inline std::int16_t SaturatingRoundingDoublingHighMul(std::int16_t a,
   std::int32_t a_32(a);
   std::int32_t b_32(b);
   std::int32_t ab_32 = a_32 * b_32;
-  std::int32_t nudge = 0;
-  std::cout << "nudge : " << nudge << std::endl;
+  std::int16_t nudge = 0;
+  std::cout << "nudge16 : " << nudge << std::endl;
   std::int16_t ab_x2_high16 =
       static_cast<std::int16_t>((ab_32 + nudge) / (1 << 15));
   return overflow ? std::numeric_limits<std::int16_t>::max() : ab_x2_high16;
